@@ -94,8 +94,8 @@ def main():
             if key_lst[key]:
                 sum_mv[0] += tpl[0]  # 横方向
                 sum_mv[1] += tpl[1]  # 縦方向]
-        if sum_mv[0] != 0 or sum_mv[1] != 0:
-            kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), rotate[tuple(sum_mv)], 0.9)
+        #if sum_mv[0] != 0 or sum_mv[1] != 0:
+        #    kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), rotate[tuple(sum_mv)], 0.9)
 
 
         kk_rct.move_ip(sum_mv)
