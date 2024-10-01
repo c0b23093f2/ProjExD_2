@@ -50,9 +50,11 @@ def game_over(screen):
 
 
 def main():
+    rotate = {(0, -5):90,(5,0):180,(0,5):270,(-5,0):0,(5,-5):135,(5,5):225,(-5,5):315,(-5,-5):45}
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((WIDTH, HEIGHT))
     bg_img = pg.image.load("fig/pg_bg.jpg")    
+    num = 0
     kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), 0, 0.9)
     kk_rct = kk_img.get_rect()
     kk_rct.center = 300, 200
@@ -91,7 +93,11 @@ def main():
         for key, tpl in DELTA.items():
             if key_lst[key]:
                 sum_mv[0] += tpl[0]  # 横方向
-                sum_mv[1] += tpl[1]  # 縦方向
+                sum_mv[1] += tpl[1]  # 縦方向]
+        if sum_mv[0] != 0 or sum_mv[1] != 0:
+            kk_img = pg.transform.rotozoom(pg.image.load("fig/3.png"), rotate[tuple(sum_mv)], 0.9)
+
+
         kk_rct.move_ip(sum_mv)
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
